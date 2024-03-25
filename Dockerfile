@@ -23,15 +23,14 @@ RUN git clone --recurse-submodules \
       https://github.com/RobotResearchRepos/hku-mars_VoxelMap \
       /catkin_ws/src/VoxelMap
 
-RUN . /opt/ros/$ROS_DISTRO/setup.bash \
+RUN . /opt/ros/$ROS_DISTRO/setup.sh \
  && apt-get update \
  && rosdep install -r -y \
      --from-paths /catkin_ws/src \
      --ignore-src \
  && rm -rf /var/lib/apt/lists/*
 
-RUN . /opt/ros/$ROS_DISTRO/setup.bash \
- && . /catkin_ws/devel/setup.bash \
+RUN . /opt/ros/$ROS_DISTRO/setup.sh \
  && cd /catkin_ws \
  && catkin_make -j1
  
